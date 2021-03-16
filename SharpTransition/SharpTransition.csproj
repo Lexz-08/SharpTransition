@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{71120EDE-5606-46C1-97C3-567C167E608E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpTransition</RootNamespace>
+    <AssemblyName>SharpTransition</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IManagedType.cs" />
+    <Compile Include="ITransitionType.cs" />
+    <Compile Include="ManagedType_Color.cs" />
+    <Compile Include="ManagedType_Double.cs" />
+    <Compile Include="ManagedType_Float.cs" />
+    <Compile Include="ManagedType_Int.cs" />
+    <Compile Include="ManagedType_Point.cs" />
+    <Compile Include="ManagedType_PointF.cs" />
+    <Compile Include="ManagedType_Rectangle.cs" />
+    <Compile Include="ManagedType_RectangleF.cs" />
+    <Compile Include="ManagedType_Size.cs" />
+    <Compile Include="ManagedType_SizeF.cs" />
+    <Compile Include="ManagedType_String.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transition.cs" />
+    <Compile Include="TransitionChain.cs" />
+    <Compile Include="TransitionElement.cs" />
+    <Compile Include="TransitionManager.cs" />
+    <Compile Include="TransitionType_Acceleration.cs" />
+    <Compile Include="TransitionType_Bounce.cs" />
+    <Compile Include="TransitionType_CriticalDamping.cs" />
+    <Compile Include="TransitionType_Deceleration.cs" />
+    <Compile Include="TransitionType_EaseInEaseOut.cs" />
+    <Compile Include="TransitionType_Flash.cs" />
+    <Compile Include="TransitionType_Linear.cs" />
+    <Compile Include="TransitionType_ThrowAndCatch.cs" />
+    <Compile Include="TransitionType_UserDefined.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
