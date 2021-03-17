@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="IManagedType.cs" />
     <Compile Include="ITransitionType.cs" />
+    <Compile Include="ManagedType_Byte.cs" />
     <Compile Include="ManagedType_Color.cs" />
     <Compile Include="ManagedType_Double.cs" />
     <Compile Include="ManagedType_Float.cs" />

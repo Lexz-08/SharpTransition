@@ -12,46 +12,43 @@ namespace TestApp
 			InitializeComponent();
 
 			Focus();
-			Animate(this, null);
 		}
 
-		private static int transitionTime = 25000;
+		private static int transitionTime = 1000;
 		private ITransitionType linear = new TransitionType_Linear(transitionTime);
-		private ITransitionType linearHalf = new TransitionType_Linear(transitionTime / 2);
 
-		private void Animate(object sender, EventArgs e)
+		private void Animate()
 		{
-			Transition t1 = new Transition(linear);
-			Transition t2 = new Transition(linear);
-			Transition t3 = new Transition(linear);
-			Transition t4 = new Transition(linear);
-			Transition t5 = new Transition(linear);
-			Transition t6 = new Transition(linear);
-			Transition t7 = new Transition(linear);
-			Transition t8 = new Transition(linear);
-			Transition t9 = new Transition(linear);
-			Transition t10 = new Transition(linear);
+			Point originalLocation = Location;
 
-			t1.add(this, "BackColor", Color.Red);
-			t2.add(this, "BackColor", Color.Blue);
-			t3.add(this, "BackColor", Color.Green);
-			t4.add(this, "BackColor", Color.Black);
-			t5.add(this, "BackColor", Color.White);
-			t6.add(this, "BackColor", Color.Aqua);
-			t7.add(this, "BackColor", Color.Fuchsia);
-			t8.add(this, "BackColor", Color.Coral);
-			t9.add(this, "BackColor", Color.Purple);
-			t10.add(this, "BackColor", Color.Red);
+			Transition shrink = new Transition(linear);
+			shrink.add(this, "Size", new Size(250, Height));
 
-			Transition.runChain(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
-
-			Transition t = new Transition(linearHalf);
-			t.add(this, "Size", new Size(250, 250));
-			t.TransitionCompletedEvent += (sender_, e_) =>
+			shrink.TransitionCompletedEvent += (sender, e) =>
 			{
-				Transition.run(this, "Location", new Point(960 - (Width / 2), 540 - (Height / 2)), new TransitionType_Linear(transitionTime / 2));
+				btnShrink.Enabled = false;
+				btnGrow.Enabled = true;
 			};
-			t.run();
+
+			shrink.run();
 		}
+		private void Reset()
+		{
+			Point originalLocation = Location;
+
+			Transition grow = new Transition(linear);
+			grow.add(this, "Size", new Size(816, Height));
+
+			grow.TransitionCompletedEvent += (sender, e) =>
+			{
+				btnShrink.Enabled = true;
+				btnGrow.Enabled = false;
+			};
+
+			grow.run();
+		}
+
+		private void btnShrink_Click(object sender, EventArgs e) => Animate();
+		private void btnGrow_Click(object sender, EventArgs e) => Reset();
 	}
 }
